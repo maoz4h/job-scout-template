@@ -8,6 +8,8 @@ It only reads. It never applies, signs in, signs up, or sends anything on your b
 - 14 VC job boards on Getro (Israel filter), Team8, Drushim, AllJobs, startupjobs.co.il, Secret Tel Aviv, and Hacker News "Who is hiring" (Israel posts), through `collect.py` (Python standard library only, no logins).
 - LinkedIn job pages, found through web search, plus your LinkedIn job-alert emails in Gmail (read only).
 - A funding radar: Israeli startups that just raised and have no technical leader named, as outreach ideas.
+- An acquisitions radar: recently acquired Israeli companies, which often open senior R&D roles.
+- Your own applications: it spots application confirmations in Gmail and marks those jobs as applied.
 - GotFriends executive listings (they block cloud servers, so a small job on your own computer can fetch them).
 
 ## Set it up

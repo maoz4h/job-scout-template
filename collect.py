@@ -64,8 +64,8 @@ def gotfriends_or_mac():
             raise e
         age = time.time() - data.get("at", 0)
         if age > 36 * 3600:
-            raise RuntimeError(f"blocked here, and the Mac's copy is {age / 3600:.0f}h old") from e
-        print(f"  GotFriends: blocked here ({type(e).__name__}); using the Mac's copy from {age / 3600:.1f}h ago")
+            raise RuntimeError(f"blocked here, and the home computer's copy is {age / 3600:.0f}h old") from e
+        print(f"  GotFriends: blocked here ({type(e).__name__}); using the home computer's copy from {age / 3600:.1f}h ago")
         return data["items"]
 
 
