@@ -10,7 +10,7 @@ It only reads. It never applies, signs in, signs up, or sends anything on your b
 - A funding radar: Israeli startups that just raised and have no technical leader named, as outreach ideas.
 - An acquisitions radar: recently acquired Israeli companies, which often open senior R&D roles.
 - Your own applications: it spots application confirmations in Gmail and marks those jobs as applied.
-- GotFriends executive listings (they block cloud servers, so a small job on your own computer can fetch them).
+- GotFriends executive listings (they block cloud servers, so a small job on your own computer fetches them, with each job's description, and the scout scores from that text).
 
 ## Set it up
 1. Install [Claude Code](https://claude.com/claude-code).

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-26
+- GotFriends: the home computer also fetches each job's description, so jobs are scored from their text instead of the title alone.
+
 ## 2026-11-25
 - LinkedIn through web search, plus "Top job picks" emails.
 - Funding radar and acquisitions radar.

@@ -186,12 +186,38 @@ def main(out_path):
     print(f"total: {len(results)} -> {out_path}")
 
 
-def gotfriends_only(out_path):
+def gotfriends_description(url):
+    """The job's own text: from "תיאור המשרה" (job description) up to the job number, at most 1,500 characters."""
+    t = text(re.sub(r"(?s)<script.*?</script>|<style.*?</style>", " ", get(url)))
+    start = t.find("תיאור המשרה")
+    if start < 0:
+        return ""
+    end = t.find("מס' משרה", start)
+    return t[start:end if end > start else start + 1500][:1500].strip()
+
+
+def gotfriends_only(out_path, max_new=15):
     items = [i for i in gotfriends() if senior(i["title"])]
+    # Descriptions: the cloud run can't open GotFriends pages (403), so the home computer fetches each
+    # new job's text once and keeps it, and the scout scores from the text instead of the title alone.
+    try:
+        old = {i["id"]: i.get("description", "") for i in json.load(open(out_path, encoding="utf-8")).get("items", [])}
+    except (OSError, ValueError):
+        old = {}
+    fetched = 0
+    for i in items:
+        if old.get(i["id"]):
+            i["description"] = old[i["id"]]
+        elif fetched < max_new:
+            try:
+                i["description"] = gotfriends_description(i["url"])
+            except Exception as e:
+                print(f"  GotFriends: no description for {i['id']} ({type(e).__name__})")
+            fetched += 1
+            time.sleep(1)
     os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
     json.dump({"at": time.time(), "items": items}, open(out_path, "w"), ensure_ascii=False, indent=1)
-    print(f"GotFriends: {len(items)} senior listings -> {out_path}")
-
+    print(f"GotFriends: {len(items)} senior listings, {sum(1 for i in items if i.get('description'))} with descriptions ({fetched} new) -> {out_path}")
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "--gotfriends-only":
