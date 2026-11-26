@@ -22,7 +22,7 @@ A private GitHub repo `job-scout` (use `gh repo create --private`). Files:
 - `SCOUT.md`: the routine's instructions (step 4).
 - `collect.py`: the collector (step 3).
 - `seen.md`: every job ever seen, one line each: `- <date> · <source> · <id> · <title> · <reported|skipped (score)>`.
-- `leads.md`: the shortlist, newest first. Each lead is `- **<score> · <title> · <company>** (<two lines: why it fits, what's weak>) · <link> · first seen <date>`.
+- `leads.md`: the shortlist, newest first. Each lead is `- **<score> (skills/seniority/domain/practical) · <title> · <company>** (<two lines: why it fits, what's weak>) · <link> · first seen <date>`.
 - `manual.md`: things I do by hand (sign-ups and emails), in two sections, "Not done yet" and "Done", with dates.
 - `channels.md`: notes on every source: what works, what's blocked, and when it was checked.
 - `.gitignore`: `candidates.json`.
@@ -53,7 +53,7 @@ Write it with these sections:
    - **Funding radar:** 2 web searches for Israeli startups that announced funding in the last 7 days (e.g. `site:calcalistech.com startup raises seed OR "Series A"`, `site:geektime.co.il raises funding`). Keep ones that build software and name no technical leader, or say they're growing R&D. They aren't posted jobs, they're people I could write to: log each in `seen.md` as `Funding · radar`, and add at most 3 a run to `leads.md` under `## Just funded (outreach)`, kept to 30 days.
    - **Acquisitions radar:** 2 web searches for Israeli tech companies acquired in the last 30 days. Acquired companies often get budget to grow R&D. For each software company, check its careers page for senior roles in Israel and score them like any job (source `Acquired`). Log each company once in `seen.md`.
    - **Applications I sent:** in Gmail (read only), the last 3 days of application confirmations ("Your application was sent to", "Thank you for applying", "Application received", "קיבלנו את מועמדותך"). Mark the matching `seen.md` line `applied`, or add one, and list them under "Applied" in the final message. Never reply to or change those emails.
-3. **Score** 1–10 against `profile.md`. Be honest: a great title with a hard requirement I lack loses points, and the reasons say so.
+3. **Score** 1–10 against `profile.md`. Be honest: a great title with a hard requirement I lack loses points, and the reasons say so. A requirement counts as met only with production evidence in `profile.md` (shipped work, not a course). When a post hides salary or seniority, that part scores low and the reasons say "not stated", never a guess. Show the split on every lead: skills · seniority · domain · practical (location, mode, stage), each out of 10, then the overall score.
 4. **Write:** add every new job to `seen.md`. Add 7+ scores to the top of `leads.md`. Keep `leads.md` to 30 days. Commit `scout: <date>, N new, M leads` and push to main.
 5. **Tell me:** pushing `leads.md` triggers the Telegram workflow (step 6). The routine never sends to Telegram itself and never holds the token. The final message lists the new leads, the skipped count, any failed source, and a **Check by hand** list (step 5).
 
