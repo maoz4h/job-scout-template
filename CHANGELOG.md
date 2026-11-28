@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-28
+- Schedule: run daily about an hour before you read your morning summary, so leads are ready when you look.
+
 ## 2026-11-26
 - Scoring: a requirement counts only with production evidence; hidden salary or seniority scores low ("not stated"); every lead shows its score split (skills, seniority, domain, practical).
 - GotFriends: the home computer also fetches each job's description, so jobs are scored from their text instead of the title alone.
